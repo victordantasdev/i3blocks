@@ -1,0 +1,69 @@
+[memory]
+command=~/.config/i3blocks/scripts/memory.sh
+label=MEM USAGE 
+interval=30
+
+[cpu_usage]
+command=~/.config/i3blocks/scripts/cpu_usage.pl
+interval=10
+LABEL=CPU 
+min_width=CPU: 100.00%
+T_WARN=50
+T_CRIT=80
+DECIMALS=2
+COLOR_NORMAL=#EBDBB2
+COLOR_WARN=#FFFC00
+COLOR_CRIT=#FF0000
+
+[temperature]
+command=~/.config/i3blocks/scripts/temperature.pl
+label=CPU TEMP 
+interval=10
+T_WARN=70
+T_CRIT=90
+SENSOR_CHIP="coretemp-isa-0000"
+
+[batterybar]
+# command=~/.config/i3blocks/scripts/batterybar.sh
+# label=bat:
+# interval=5
+# markup=pango
+# min_width=bat: ■■■■■
+# # Discharging colors low to high
+# C1=#FF0027
+# C2=#FF3B05
+# C3=#FFB923
+# C4=#FFD000
+# C5=#E4FF00
+# C6=#ADFF00
+# C7=#6DFF00
+# C8=#10BA00
+# CHARGING_COLOR=#00AFE3
+# FULL_COLOR=#FFFFFF
+# AC_COLOR=#535353
+
+[keyboard]
+command=setxkbmap -v | awk -F "+" '/symbols/ {print $2}'
+interval=1
+
+[volume]
+command=amixer sget Master | grep 'Right:' | awk -F'[][]' '{ print $2 }'
+interval=1
+
+[rofi_calendar]
+command=~/.config/i3blocks/scripts/rofi_calendar.sh
+interval=3600
+BAR_POSITION=top
+WEEK_START=monday
+DATEFTM=+%a %d %b %Y
+SHORTFMT=+%d/%m/%Y
+LABEL= 
+FONT=Monospace 10
+LEFTCLICK_PREV_MONTH=false
+PREV_MONTH_TEXT=« previous month «
+NEXT_MONTH_TEXT=» next month »
+ROFI_CONFIG_FILE=/dev/null
+
+[time]
+command=date +%T
+interval=1
